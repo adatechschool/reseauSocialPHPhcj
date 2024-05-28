@@ -1,5 +1,6 @@
 <?php
-function echecRequete(){
+function echecRequete($mysqli,$laQuestionEnSql){
+    global $lesInformations;
     $lesInformations = $mysqli->query($laQuestionEnSql);
     // Vérification
     if ( ! $lesInformations)
@@ -7,5 +8,6 @@ function echecRequete(){
         echo("Échec de la requete : " . $mysqli->error);
         exit();
     }
+    return $lesInformations;
 }
 ?>

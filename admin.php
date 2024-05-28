@@ -9,7 +9,7 @@
     <body>
        <?php 
         include('header.php');
-        include('fonctions.php')
+        include('fonctions.php');
        ?>
 
         <?php
@@ -17,7 +17,7 @@
          * Etape 1: Ouvrir une connexion avec la base de donnée.
          */
         // on va en avoir besoin pour la suite
-        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+        $mysqli = new mysqli("localhost", "root","", "socialnetwork");
         //verification
         if ($mysqli->connect_errno)
         {
@@ -33,7 +33,7 @@
                  * Etape 2 : trouver tous les mots clés
                  */
                 $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";
-                echecRequete()
+                echecRequete($mysqli,$laQuestionEnSql);
 
                 /*
                  * Etape 3 : @todo : Afficher les mots clés en s'inspirant de ce qui a été fait dans news.php
@@ -41,13 +41,13 @@
                  */
                 while ($tag = $lesInformations->fetch_assoc())
                 {
-                    echo "<pre>" . print_r($tag, 1) . "</pre>";
                     ?>
                     <article>
-                        <h3>#chaussette</h3>
-                        <p>id:321</p>
+                        <h3>#<?php echo $tag['label'];?></h3>
                         <nav>
-                            <a href="tags.php?tag_id=321">Messages</a>
+                            <?php $tagIdentifiant=$tag['id'];
+                             echo'<a href="tags.php?tag_id='.$tagIdentifiant.'">Messages</a>'?>
+                            
                         </nav>
                     </article>
                 <?php } ?>
@@ -60,7 +60,7 @@
                  * PS: on note que la connexion $mysqli à la base a été faite, pas besoin de la refaire.
                  */
                 $laQuestionEnSql = "SELECT * FROM `users` LIMIT 50";
-                echecRequete();
+                echecRequete($mysqli,$laQuestionEnSql);
 
                 /*
                  * Etape 5 : @todo : Afficher les utilisatrices en s'inspirant de ce qui a été fait dans news.php
@@ -68,17 +68,16 @@
                  */
                 while ($tag = $lesInformations->fetch_assoc())
                 {
-                    echo "<pre>" . print_r($tag, 1) . "</pre>";
                     ?>
                     <article>
-                        <h3>Alexandra</h3>
-                        <p>id:123</p>
+                        <h3><?php echo $tag['alias']?></h3>
                         <nav>
-                            <a href="wall.php?user_id=123">Mur</a>
-                            | <a href="feed.php?user_id=123">Flux</a>
-                            | <a href="settings.php?user_id=123">Paramètres</a>
-                            | <a href="followers.php?user_id=123">Suiveurs</a>
-                            | <a href="subscriptions.php?user_id=123">Abonnements</a>
+                            <?php $tagIdUser=$tag['id'];
+                            echo'<a href="wall.php?user_id='.$tagIdUser.'"> Mur </a>';
+                            echo'<a href="feed.php?user_id='.$tagIdUser.'"> Flux </a>';
+                            echo'<a href="settings.php?user_id='.$tagIdUser.'"> Paramètres </a>';
+                            echo'<a href="followers.php?user_id='.$tagIdUser.'"> Suiveurs </a>';
+                            echo'<a href="subscriptions.php?user_id='.$tagIdUser.'"> Abonnements </a>';?>
                         </nav>
                     </article>
                 <?php } ?>

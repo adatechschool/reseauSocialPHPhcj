@@ -87,7 +87,11 @@
                     ?>
                     <article>
                         <h3>
-                            <time><?php echo $post['created'] ?></time>
+                            <time><?php 
+                            $time = strtotime($post['created']);
+                            $newformat = date('d/m/Y à H:i',$time);
+                            echo $newformat ?></time>
+                            
                         </h3>
                         <address>par <?php echo $post['author_name']?></address>
                         <div>
