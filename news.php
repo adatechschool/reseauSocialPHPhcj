@@ -85,34 +85,7 @@
                     // 
                     // avec le ? > ci-dessous on sort du mode php et on écrit du html comme on veut... mais en restant dans la boucle
                     ?>
-                    <article>
-                        <h3>
-                            <time><?php 
-                            $time = strtotime($post['created']);
-                            $newformat = date('d/m/Y à H:i',$time);
-                            echo $newformat ?></time>
-                            
-                        </h3>
-                        <address>par <?php echo $post['author_name']?></address>
-                        <div>
-                            <p><?php echo $post['content']?></p>
-                        </div>
-                        <footer>
-                            <small>♥ <?php echo $post['like_number']?> </small>
-                            <a href="">#<?php 
-                                $tagHashtag=$post['taglist'];
-                                //transforme en tableau la chaine de caractères des tags, idem fct split en js
-                                $tagHastagList=explode(",",$tagHashtag);
-                                echo $tagHastagList[0];
-                            ?></a><?php 
-                                if(isset($tagHastagList[1]))
-                                {
-                                    ?><a href="">, #<?php 
-                                    echo $tagHastagList[1];
-                                }
-                            ?></a>
-                        </footer>
-                    </article>
+                   <?php include('postUser.php')?>
                     <?php
                     // avec le <?php ci-dessus on retourne en mode php 
                 }// cette accolade ferme et termine la boucle while ouverte avant.
