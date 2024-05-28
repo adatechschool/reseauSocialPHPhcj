@@ -38,10 +38,12 @@
                     GROUP BY users.id
                     ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
+                
                 // Etape 4: à vous de jouer
                 //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous 
                 ?>
                 <article>
+                  
                     <img src="user.jpg" alt="blason"/>
                     <h3>Alexandra</h3>
                     <p>id:654</p>                    
