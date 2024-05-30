@@ -1,6 +1,12 @@
+<?php 
+$tags=explode(";",$post['taglist']);
+?>
+
 <article>
     <h3>
         <time><?php 
+            //echo "<pre>" . print_r($post, 1) . "</pre>";
+            //echo "<pre>" . print_r($tags, 1) . "</pre>";
             $time = strtotime($post['created']);
             $newformat = date('d/m/Y à H:i',$time);
             echo $newformat ?></time>
@@ -13,12 +19,13 @@
     <footer>
         <small>♥ <?php echo $post['like_number']?> </small>
             <?php
-            //transforme en tableau la chaine de caractères des tags, idem fct split en js
-            $tagHastagList=explode(",",$post['taglist']);
-            foreach ($tagHastagList as &$tag){
-            ?>
-            <a href="">#<?php echo $tag;?></a>
-            <?php
-            }?>
+            foreach($tags as $tag){
+                $tab=explode(",",$tag);
+                $tab_id=$tab[0];
+                $tab_label=$tab[1];
+                ?>
+             <a href="tags.php?tag_id=<?php echo $tab_id?>">#<?php echo $tab_label;?></a> 
+             <?php
+          }?>
     </footer>
 </article>

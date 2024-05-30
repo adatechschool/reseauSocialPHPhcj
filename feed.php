@@ -58,9 +58,10 @@
                     SELECT posts.content,
                     posts.created,
                     posts.user_id,
+                    posts_tags.tag_id as tag_id,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                    GROUP_CONCAT(DISTINCT tags.id,',',tags.label SEPARATOR';') AS taglist 
                     FROM followers 
                     JOIN users ON users.id=followers.followed_user_id
                     JOIN posts ON posts.user_id=users.id
@@ -82,6 +83,7 @@
                 <?php            
                 while ($post = $lesInformations->fetch_assoc())
                 {
+                    
                     ?>        
                     <?php include('postUser.php');     ?>;   
                    
