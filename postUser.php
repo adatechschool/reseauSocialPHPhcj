@@ -1,5 +1,7 @@
 <?php 
-$tags=explode(";",$post['taglist']);
+$tags=explode(";",(string)$post['taglist']);
+
+
 ?>
 
 <article>
@@ -18,14 +20,14 @@ $tags=explode(";",$post['taglist']);
     </div>
     <footer>
         <small>♥ <?php echo $post['like_number']?> </small>
-            <?php
+            <?php           
             foreach($tags as $tag){
                 $tab=explode(",",$tag);
                 $tab_id=$tab[0];
-                $tab_label=$tab[1];
+                $tab_label=$tab[1];}
                 ?>
              <a href="tags.php?tag_id=<?php echo $tab_id?>">#<?php echo $tab_label;?></a> 
              <?php
-          }?>
+          ?>
     </footer>
 </article>

@@ -46,6 +46,18 @@
                     <p>Sur cette page vous trouverez tous les messages de l'utilisatrice : <?php echo $user['alias']?>
                     </p>
                 </section>
+                <section>
+                    <h3>Message sur mon mur</h3>
+                    <form action="wall.php" method="post">
+                        <input type='hidden' name='???' value='achanger'>
+                        <dl>
+                            <dt><label for='message'></label></dt>
+                            <dd><textarea name='message' placeholder="écris ton message ici"></textarea></dd>
+                        </dl>
+                        <input type='submit'>
+                    </form>    
+
+                </section>
             </aside>
             <main>
                 <?php
