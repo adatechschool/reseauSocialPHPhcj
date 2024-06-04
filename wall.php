@@ -124,12 +124,32 @@
                                 ;
                  // Etape 5 : execution
                 $ok = $mysqli->query($lInstructionSql);
+                echo "Vous venez de vous abonner à l'utilisateur ".$user['alias'];
                   };
-            }
-            return $lesInformations;
+            }else{?>
+                    <br>
+                    <hr>
+                    <form action="wall.php?user_id=<?php echo $userId?>" method="post">
+                        <input type=submit name="desabonnement" value="Se désabonner">
+                    </form>
+                  <?php   ;
+
+                  if (isset($_POST['desabonnement'])) {
+                      //Etape 4 : construction de la requete
+                     $lInstructionSql = "DELETE FROM `followers` WHERE following_user_id=".$_SESSION['connected_id']." AND followed_user_id=".$userId."";
+                                
+                 // Etape 5 : execution
+                $ok = $mysqli->query($lInstructionSql);
+                echo "Vous venez de vous désabonner à l'utilisateur ".$user['alias'];
+                  };
+
+             
+
+          }?>
+            
           
 
-                ?>
+                
 
             </aside>
             <main>
