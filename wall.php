@@ -94,6 +94,16 @@
               
 
                 <?php  
+                
+            ?>     
+                 <?php 
+            $laQuestionEnSql = "SELECT * FROM `followers` WHERE following_user_id=".$_SESSION['connected_id']." AND followed_user_id=".$userId."";
+           
+            $lesInformations = $mysqli->query($laQuestionEnSql);
+            var_dump($lesInformations->num_rows);
+            // Vérification
+            if ( $lesInformations->num_rows==0)
+            {
                 if($userId!= $_SESSION['connected_id'])
                 {?>
                     <br>
@@ -104,7 +114,6 @@
                   <?php  } ;
 
                   if (isset($_POST['abonnement'])) {
-                     // echo "Bonjour !";
                       //Etape 4 : construction de la requete
                      $lInstructionSql = "INSERT INTO followers "
                     . "(id, followed_user_id,following_user_id) "
@@ -116,8 +125,12 @@
                  // Etape 5 : execution
                 $ok = $mysqli->query($lInstructionSql);
                   };
-            
-                        ?>     
+            }
+            return $lesInformations;
+          
+
+                ?>
+
             </aside>
             <main>
                 <?php
