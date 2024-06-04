@@ -15,7 +15,8 @@
         //session_destroy sert à detruire la session  
         session_destroy(); ?> 
         <div id="wrapper">
-        <?php echo" Vous êtes  déconnecté";    
+        <?php
+         header("Location: admin.php");   
      
         include('fonctions.php');
        ?>
