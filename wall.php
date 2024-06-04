@@ -44,7 +44,7 @@
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez tous les messages de l'utilisatrice : <?php echo $user['alias']; echo $userId;?>
+                    <p>Sur cette page vous trouverez tous les messages de l'utilisatrice : <?php echo $user['alias'];?>
                     </p>
                 </section>
                 <section>
@@ -70,7 +70,7 @@
                         // on ne fait ce qui suit que si un formulaire a été soumis.
                         // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
                         // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
-                        echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                        //echo "<pre>" . print_r($_POST, 1) . "</pre>";
                         // et complétez le code ci dessous en remplaçant les ???
                         $wallAuthorId = $userId;
                         $postContent = $_POST['message'];
@@ -89,7 +89,35 @@
                                 . "NULL);"
                                 ;
                         // Etape 5 : execution
-                        $ok = $mysqli->query($lInstructionSql);}?>
+                        $ok = $mysqli->query($lInstructionSql);
+                        }?>
+              
+
+                <?php  
+                if($userId!= $_SESSION['connected_id'])
+                {?>
+                    <br>
+                    <hr>
+                    <form action="wall.php?user_id=<?php echo $userId?>" method="post">
+                        <input type=submit name="abonnement" value="S'abonner">
+                    </form>
+                  <?php  } ;
+
+                  if (isset($_POST['abonnement'])) {
+                     // echo "Bonjour !";
+                      //Etape 4 : construction de la requete
+                     $lInstructionSql = "INSERT INTO followers "
+                    . "(id, followed_user_id,following_user_id) "
+                
+                                . "VALUES (NULL, "
+                                . $userId . ", "
+                                . $_SESSION['connected_id'].")"
+                                ;
+                 // Etape 5 : execution
+                $ok = $mysqli->query($lInstructionSql);
+                  };
+            
+                        ?>     
             </aside>
             <main>
                 <?php
