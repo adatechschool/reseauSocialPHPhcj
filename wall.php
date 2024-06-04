@@ -100,7 +100,7 @@
             $laQuestionEnSql = "SELECT * FROM `followers` WHERE following_user_id=".$_SESSION['connected_id']." AND followed_user_id=".$userId."";
            
             $lesInformations = $mysqli->query($laQuestionEnSql);
-            var_dump($lesInformations->num_rows);
+            //var_dump($lesInformations->num_rows);
             // Vérification
             if ( $lesInformations->num_rows==0)
             {
