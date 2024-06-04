@@ -11,7 +11,7 @@
                 <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']?>">Mots-clés</a>
             </nav>
             <nav id="user">
-                <a href="#">▾ Profil</a>
+                <a href="#">▾ Bonjour <?php echo  $_SESSION['connected_alias']?> </a>
                 <ul>
                     <li><a href="settings.php?user_id=5">Paramètres</a></li>
                     <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>

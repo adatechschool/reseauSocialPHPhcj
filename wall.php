@@ -22,6 +22,7 @@
              * ... mais en résumé c'est une manière de passer des informations à la page en ajoutant des choses dans l'url
              */
             $userId =intval($_GET['user_id']);
+            
             ?>
             <?php
             /**
@@ -43,12 +44,12 @@
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez tous les messages de l'utilisatrice : <?php echo $user['alias']?>
+                    <p>Sur cette page vous trouverez tous les messages de l'utilisatrice : <?php echo $user['alias']; echo $userId;?>
                     </p>
                 </section>
                 <section>
                     <h3>Message sur mon mur</h3>
-                    <form action="wall.php" method="post">
+                    <form action="wall.php?user_id=<?php echo $userId?>" method="post">
                         <input type='hidden' name='???' value='achanger'>
                         <dl>
                             <dt><label for='message'></label></dt>
@@ -56,8 +57,39 @@
                         </dl>
                         <input type='submit'>
                     </form>    
-
                 </section>
+                <?php
+                /**
+                     * TRAITEMENT DU FORMULAIRE
+                     */
+                    // Etape 1 : vérifier si on est en train d'afficher ou de traiter le formulaire
+                    // si on recoit un champs email rempli il y a une chance que ce soit un traitement
+                    $enCoursDeTraitement = isset($_POST['message']);
+                    if ($enCoursDeTraitement)
+                    {
+                        // on ne fait ce qui suit que si un formulaire a été soumis.
+                        // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
+                        // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
+                        echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                        // et complétez le code ci dessous en remplaçant les ???
+                        $wallAuthorId = $userId;
+                        $postContent = $_POST['message'];
+
+
+                        //Etape 3 : Petite sécurité
+                        // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp
+                        $postContent = $mysqli->real_escape_string($postContent);
+                        //Etape 4 : construction de la requete
+                        $lInstructionSql = "INSERT INTO posts "
+                                . "(id, user_id, content, created, parent_id) "
+                                . "VALUES (NULL, "
+                                . $wallAuthorId . ", "
+                                . "'" . $postContent . "', "
+                                . "NOW(), "
+                                . "NULL);"
+                                ;
+                        // Etape 5 : execution
+                        $ok = $mysqli->query($lInstructionSql);}?>
             </aside>
             <main>
                 <?php
