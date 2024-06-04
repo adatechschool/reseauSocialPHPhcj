@@ -47,7 +47,11 @@
                     <p>Sur cette page vous trouverez tous les messages de l'utilisatrice : <?php echo $user['alias'];?>
                     </p>
                 </section>
-                <section>
+                <?php
+                if($userId== $_SESSION['connected_id'])
+                    {?>
+                       
+                       <section>
                     <h3>Message sur mon mur</h3>
                     <form action="wall.php?user_id=<?php echo $userId?>" method="post">
                         <input type='hidden' name='???' value='achanger'>
@@ -58,6 +62,13 @@
                         <input type='submit'>
                     </form>    
                 </section>
+                      <?php  
+    
+                      
+    
+              }?>
+                
+               
                 <?php
                 /**
                      * TRAITEMENT DU FORMULAIRE
@@ -162,6 +173,7 @@
                     posts.created,
                     users.alias as author_name,
                     posts.user_id,
+                    posts.id,
                     GROUP_CONCAT(DISTINCT tags.id,',',tags.label SEPARATOR';') AS taglist,
                     COUNT(likes.id) as like_number
                     FROM posts
