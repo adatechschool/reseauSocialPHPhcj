@@ -1,5 +1,5 @@
 body{
-    background-color: #003;
+    background-color: rgb(96, 4, 44);
     font-family: Arial;
 }
 
@@ -7,53 +7,62 @@ a{text-decoration: none; color:black;}
 a:hover{text-decoration: underline;}
 
 body>header{
-    background-color: #fff;
+    background-color: #ffffff;
     display:flex;
     width:80em;
     margin:0 auto 2em auto;    
     padding:0;
-
+    border-radius:10px;
+    font-family: "Balsamiq Sans", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
+
 body>header img{
     height:5em;
+    border-radius: 10px 0 0 10px;
 }
 body>header #menu {
     display:flex;
     width:50%;
     align-items: stretch;
-    border-left: 1px solid #99b;
+    border-left: 1px solid  rgb(215, 137, 173);
+    font-size: 1.1em;
+    
 }
 body>header #menu a{
     flex:1;
     text-align: center;
     padding-top:2em;
-    border-right: 1px solid #99b;
+    border-right: 1px solid  rgb(215, 137, 173);
+    font-size: 1.1em;
 }
 body>header a:hover
 {
-    background-color: #99b;
+    background-color: rgb(230, 178, 202);
 }
 body>header ul{list-style: none;}
 body>header #user
 {
-    margin-left: auto;
-    flex:0.2;
-    border-left: 1px solid #99b;
+    margin-left: 30%;
+    flex:1;
+    border-left: 1px solid  rgb(215, 137, 173);
 }
 body>header #user>a{
     display:block;
     text-align: center;
     padding:2em 0;
     width:100%;
+    font-size: 1.1em;
 }
 body>header #user ul{ 
     display: none;
     position: absolute;
     padding:0;
     margin:0;
-    margin-left:-5em;
-    background-color: #fff;
-    border: 1px solid #99b;
+    margin-left:-1rem;
+    background-color: #ffffff;
+    border: 1px solid  rgb(215, 137, 173);
 
     z-index: 1;
 }
@@ -61,7 +70,7 @@ body>header #user ul li a{
     display:block;
     width:10em;
     padding:1em;
-    border-bottom: 1px solid #99b;
+    border-bottom: 1px solid  rgb(215, 137, 173);
 }
 body>header #user:hover ul{
     display:block;
@@ -73,12 +82,15 @@ body>header #user:hover ul{
     width:80em;
     margin:0 auto 2em auto;
 }
+
 #wrapper aside{
-    background-color: #fff;
+    background-color: rgb(214, 175, 191);
     flex:1;
-    padding:1em;
-    border-radius: 1em;    
+    padding:2em;
+    border-radius: 1em; 
+    border: inset solid  rgb(120, 24, 64) 3px;
 }
+
 #wrapper aside img{
     display: block;
     width:50%;
@@ -90,9 +102,10 @@ body>header #user:hover ul{
     padding-left:1em;
     height: 80vh;
     overflow-y:  scroll;
+    border-radius:10px;
 }
 #wrapper main article{
-    background-color: #fff;
+    background-color: #ffffff;
     padding:1em;
     margin-bottom: 1em ;
     border-radius: 1em;
@@ -117,18 +130,22 @@ body>header #user:hover ul{
 #wrapper main article footer{
     margin-top: 1em;
     text-align: right;
+
 }
 #wrapper main article footer small{
     float:left;
+    
 }
-
+ 
+    
+ 
 #wrapper.admin{flex-direction: row-reverse}
 #wrapper.admin aside{flex:1;margin-left:1em;border-radius:0;padding:0;}
-#wrapper.admin main{flex:2;background-color: #fff;border-radius: 0;padding:0;}
+#wrapper.admin main{flex:2;background-color: #ffffff;border-radius: 0;padding:0;}
 #wrapper.admin h2{text-align: center;}
 #wrapper.admin h3{margin:0;}
 #wrapper.admin nav{text-align: right;}
-#wrapper.admin article{border:1px solid #ddd;border-radius: 1em;padding:1em;margin:1em;}
+#wrapper.admin article{border:1px solid #ffffff;border-radius: 1em;padding:1em;margin:1em;}
 #wrapper.admin article p{float:left;margin:0;}
 
 
@@ -152,11 +169,49 @@ body>header #user:hover ul{
 }
 
 pre{
-    color:#aaa;
+    color:#ffffff;
 }
 
 form dl dt{float:left;font-weight: bold;line-height: 1.5em;}
 form dl dd{margin-left:10em;line-height: 1.5em;margin-bottom: 1em}
 form dl dd textarea{width:40em;height: 15em;}
 
+time,address{
+    font-style: italic;
+    font-weight: bold;
+    color:rgb(96, 4, 44)
+}
+
+#hastag{
+    color: rgb(120, 6, 54);
+}
+
+#heart,#nbrLike{
+   color: rgb(120, 6, 54);
+   font-size: 130%;
+   border:none;
+   background-color: #ffffff;
+   transition:all ease 0.2s;
+   transform: translateY(2px);
+}
+
+#heart:hover{
+    color:rgb(214, 175, 191);
+    transform: translateY(-2px);
+    font-size: 180%;
+}
+
+.btn{
+    width:60%;
+    height:150%;
+    background-color: rgb(91, 40, 62);
+    color:white;
+    font-size: 1.2rem;
+    border-radius:10px 0 10px 0;
+}
+
+.btn:hover{
+    font-size: 1.3rem;
+    background-color: rgb(111, 17, 58);
+}
 

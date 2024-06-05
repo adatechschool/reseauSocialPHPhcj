@@ -1,11 +1,12 @@
-<?php session_start() ?>
+<?php session_start() ;
+include('police.php');?>
 
 <header>
             <a href='admin.php'><img src="resoc.jpg" alt="Logo de notre réseau social"/></a>
             <?php
             if (isset($_SESSION['connected_id'])){?>
             <nav id="menu">
-                <a href="news.php">Actualités</a>,
+                <a href="news.php">Actualités</a>
                 <a href="wall.php?user_id=<?php echo $_SESSION['connected_id']?>">Mur</a>
                 <a href="feed.php?user_id=<?php echo $_SESSION['connected_id']?>">Flux</a>
                 <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id']?>">Mots-clés</a>

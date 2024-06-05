@@ -48,7 +48,7 @@
                     ?>
                     <article>
                   
-                    <img src="user.jpg" alt="blason"/>
+                    <img src="img/user<?php echo $post['id'];?>" alt="blason"/>
                     <h3><?php echo $post['alias']?></h3>
                     <p>id:<?php echo $post['id']?></p>                    
                 </article>

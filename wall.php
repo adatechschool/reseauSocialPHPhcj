@@ -21,7 +21,7 @@
              * Documentation : https://www.php.net/manual/fr/reserved.variables.get.php
              * ... mais en résumé c'est une manière de passer des informations à la page en ajoutant des choses dans l'url
              */
-            $userId =intval($_GET['user_id']);
+            $userId =intval($_GET['user_id'])
             
             ?>
             <?php
@@ -59,7 +59,7 @@
                             <dt><label for='message'></label></dt>
                             <dd><textarea name='message' placeholder="écris ton message ici"></textarea></dd>
                         </dl>
-                        <input type='submit'>
+                        <input type='submit' class="btn">
                     </form>    
                 </section>
                       <?php  
@@ -117,7 +117,7 @@
                     <br>
                     <hr>
                     <form action="wall.php?user_id=<?php echo $userId?>" method="post">
-                        <input type=submit name="abonnement" value="S'abonner">
+                        <input type=submit name="abonnement" class="btn" value="S'abonner">
                     </form>
                   <?php  } ;
 
@@ -132,13 +132,13 @@
                                 ;
                  // Etape 5 : execution
                 $ok = $mysqli->query($lInstructionSql);
-                echo "Vous venez de vous abonner à l'utilisateur ".$user['alias'];
+                header("Location:wall.php?user_id=$userId");
                   };
             }else{?>
                     <br>
                     <hr>
                     <form action="wall.php?user_id=<?php echo $userId?>" method="post">
-                        <input type=submit name="desabonnement" value="Se désabonner">
+                        <span><input type=submit name="desabonnement" class="btn" value="Se désabonner"></span>
                     </form>
                   <?php   ;
 
@@ -148,7 +148,7 @@
                                 
                  // Etape 5 : execution
                 $ok = $mysqli->query($lInstructionSql);
-                echo "Vous venez de vous désabonner à l'utilisateur ".$user['alias'];
+                header("Location:wall.php?user_id=$userId");
                   };
 
              

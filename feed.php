@@ -58,6 +58,7 @@
                     SELECT posts.content,
                     posts.created,
                     posts.user_id,
+                    posts.id,
                     posts_tags.tag_id as tag_id,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  

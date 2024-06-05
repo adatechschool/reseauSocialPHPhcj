@@ -78,7 +78,7 @@
                             <dt><label for='motpasse'>Mot de passe</label></dt>
                             <dd><input type='password'name='motpasse'></dd>
                         </dl>
-                        <input type='submit'>
+                        <input type='submit' class="btn">
                     </form>
                     <p>
                         Pas de compte?
