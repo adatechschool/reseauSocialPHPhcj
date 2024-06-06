@@ -10,7 +10,7 @@
     </h3>
     <?php 
     if ((isset($post['user_id']))&&(isset($post['author_name']))){?>
-    <a href=<?php"echo 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']"?>
+    <a href="wall.php?user_id=<?php echo $post['user_id']?>">
     <address> par <?php echo $post['author_name']?></address></a>
     <div>
         <p><?php echo $post['content']?></p>
@@ -18,18 +18,18 @@
     <?php };?>
     <footer>
         <?php 
-            if($userId!= $_SESSION['connected_id']){
+            if(isset($userId)||$userId!= $_SESSION['connected_id']){
                 if (isset($post['like_number'])){  
                 ?>
                     <br>
                     <hr>
                     <form action="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>" method="post">
-
-                        
+                                               
                         <small><input type=submit name="like" value="♥" id="heart"></small>
                         <!-- pour permettre de récupérer la valeur du post et qu'on puisse like le bon post -->
-                        <input type="hidden" name='id' value="<?= $post['id'] ?>">
-                        <small id="nbrLike"><?php echo $post['like_number'];}?> </small>
+                        <?php if(isset($post['id'])){?>
+                        <input type="hidden" name='id' value="<?= $post['id']?>">
+                        <small id="nbrLike"><?php echo $post['like_number'];}}?> </small>
                     </form>
                   <?php  } ;
                 if(isset($_POST['like'])){
@@ -70,7 +70,7 @@
                    
                     //$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
                     //$extra = 'mypage.php';
-                    //header("Location: http://$host$uri/$extra");
+                    //header("Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
                   
                  }
             }
