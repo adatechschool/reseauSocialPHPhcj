@@ -52,7 +52,8 @@
                     ;
 
                  // Etape 5 : execution
-                $ok = $mysqli->query($lInstructionSql);   
+                $ok = $mysqli->query($lInstructionSql);  
+                unset($_POST['like']); 
                 header("Location:wall.php?user_id=$userId");        
                   }else{
                     //Etape 4 : construction de la requete
@@ -60,7 +61,9 @@
                      //var_dump($lInstructionSql);die;       
                         // Etape 5 : execution
                     $ok = $mysqli->query($lInstructionSql);
-                    header("Location:wall.php?user_id=$userId");
+                    unset($_POST['like']);
+                    //var_dump($userId);die;
+                   header("Location:wall.php?user_id=$userId");
                     //$host  = $_SERVER['HTTP_HOST'];
                   // $uri=$_SERVER['REQUEST_URI'];
                     //header("Location:http://$host$uri")

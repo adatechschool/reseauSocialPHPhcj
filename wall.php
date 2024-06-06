@@ -189,7 +189,7 @@
                  */
                 while ($post = $lesInformations->fetch_assoc())
                 {
-                
+              
                     ?>        
                     <?php include('postUser.php');     ?>;   
                    

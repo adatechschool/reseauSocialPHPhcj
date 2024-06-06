@@ -56,7 +56,7 @@
                                 . ");";
                         // Etape 6: exécution de la requete
                         $ok = $mysqli->query($lInstructionSql);
-                        if ( ! $ok)
+                        if ( (! $ok))
                         {
                             echo "L'inscription a échouée : " . $mysqli->error;
                         } else
