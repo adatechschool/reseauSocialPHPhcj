@@ -18,7 +18,7 @@
     <?php };?>
     <footer>
         <?php 
-            if(isset($userId)||$userId!= $_SESSION['connected_id']){
+            if(isset($_GET['tag_id'])||isset($userId)||$userId!= $_SESSION['connected_id']){
                 if (isset($post['like_number'])){  
                 ?>
                     <br>
